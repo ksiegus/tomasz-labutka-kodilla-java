@@ -13,6 +13,7 @@ import com.kodilla.stream.lambda.Processor;
 import com.kodilla.stream.person.People;
 import com.kodilla.stream.reference.FunctionalCalculator;
 
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -82,10 +83,22 @@ public class StreamMain {
         System.out.println(theResultStringOfBooks);
 
         System.out.println("\nStream - ForumUser - Map");
-        Forum theForum = new Forum();
+
+        List<ForumUser> users = new ArrayList<>();
+        users.add(new ForumUser(1, "Andrzej Andrzejewski", 'M', LocalDate.of(2001,1,8), 1));
+        users.add(new ForumUser(2, "Martyna Maciejewska", 'F', LocalDate.of(1978,4,5), 2));
+        users.add(new ForumUser(3, "Adam Adamowski", 'M', LocalDate.of(2000,11,1), 5));
+        users.add(new ForumUser(4, "Zenon Zenkiewicz", 'M', LocalDate.of(2002,11,24), 0));
+        users.add(new ForumUser(5, "Piotr Piotrowski", 'M', LocalDate.of(1954,2,25), 23));
+        users.add(new ForumUser(6, "Tomasz Tomaszewski", 'M', LocalDate.of(1993,12,5), 6));
+        users.add(new ForumUser(7, "Agnieszka Nowak", 'F', LocalDate.of(2004,1,5), 4));
+
+        Forum theForum = new Forum(users);
+        LocalDate checkDate = LocalDate.now().minusYears(20).minusDays(1);
+
         Map<Integer, ForumUser> theResultMapOfUser = theForum.getUserList().stream()
                 .filter(forumUser -> forumUser.getSex() == 'M')
-                .filter(forumUser -> forumUser.getBornDate().getYear() >= 2000)
+                .filter(forumUser -> forumUser.getBornDate().isAfter(checkDate))
                 .filter(forumUser -> forumUser.getPostCount() > 0)
                 .collect(Collectors.toMap(ForumUser::getId, forumUser -> forumUser));
 
