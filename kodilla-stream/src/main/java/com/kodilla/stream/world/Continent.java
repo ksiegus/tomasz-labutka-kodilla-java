@@ -3,11 +3,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 public final class Continent {
-    private String continentName;
+    private String name;
     private Set<Country> countries = new HashSet<>();
 
-    public Continent(String continentName) {
-        this.continentName = continentName;
+    public Continent(String name) {
+        this.name = name;
     }
 
     public void addCountry(Country country) {
@@ -25,11 +25,11 @@ public final class Continent {
 
         Continent continent = (Continent) o;
 
-        return continentName.equals(continent.continentName);
+        return name.equals(continent.name);
     }
 
     @Override
     public int hashCode() {
-        return continentName.hashCode();
+        return name.hashCode();
     }
 }

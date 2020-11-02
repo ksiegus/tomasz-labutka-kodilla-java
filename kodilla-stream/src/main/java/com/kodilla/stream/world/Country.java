@@ -3,16 +3,16 @@ package com.kodilla.stream.world;
 import java.math.BigDecimal;
 
 public final class Country {
-    private final String countryName;
+    private final String name;
     private final BigDecimal peopleQuantity;
 
     public Country(String countryName, BigDecimal peopleQuantity) {
-        this.countryName = countryName;
+        this.name = countryName;
         this.peopleQuantity = peopleQuantity;
     }
 
     public String getCountryName() {
-        return countryName;
+        return name;
     }
 
     public BigDecimal getPeopleQuantity() {
@@ -26,12 +26,12 @@ public final class Country {
 
         Country country = (Country) o;
 
-        if (!countryName.equals(country.countryName)) return false;
+        if (!name.equals(country.name)) return false;
         return peopleQuantity.equals(country.peopleQuantity);
     }
 
     @Override
     public int hashCode() {
-        return countryName.hashCode();
+        return name.hashCode();
     }
 }

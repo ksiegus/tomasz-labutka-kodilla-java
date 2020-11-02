@@ -10,9 +10,6 @@ import java.util.stream.Collectors;
 public final class World {
     private Set<Continent> continents = new HashSet<>();
 
-    public World() {
-    }
-
     public void addContinent(Continent continent) {
         continents.add(continent);
     }
