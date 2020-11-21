@@ -25,11 +25,7 @@ public class OrderApplication {
         User user = new User("Tomasz", "Tomaszewski", "email@email.pl", "+48999999999");
         OrderRequest orderRequest = new OrderRequest(user, order1);
 
-        InformationServiceClass informationService = new InformationServiceClass();
-        OrderServiceClass orderService = new OrderServiceClass();
-        OrderRepositoryClass orderRepository = new OrderRepositoryClass();
-
-        ProductOrderService service = new ProductOrderService(informationService, orderService, orderRepository);
+        ProductOrderService service = new ProductOrderService(new OrderInformationService(), new UserOrderService(), new OrderRepositoryService());
         OrderDto orderDto = service.process(orderRequest);
 
         System.out.println(orderDto.getUser().getFirstName() + " " + orderDto.getUser().getLastName() + ", result " + orderDto.isOrdered());

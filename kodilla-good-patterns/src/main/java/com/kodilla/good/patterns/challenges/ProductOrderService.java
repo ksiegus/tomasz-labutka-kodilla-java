@@ -4,22 +4,22 @@ public class ProductOrderService {
 
     private InformationService informationService;
     private OrderService orderService;
-    private OrderRepository orderRepository;
+    private RepositoryService repositoryService;
 
-    public ProductOrderService(final InformationServiceClass informationService,
+    public ProductOrderService(final OrderInformationService informationService,
                            final OrderService orderService,
-                           final OrderRepository orderRepository) {
+                           final OrderRepositoryService repositoryService) {
         this.informationService = informationService;
         this.orderService = orderService;
-        this.orderRepository = orderRepository;
+        this.repositoryService = repositoryService;
     }
 
     public OrderDto process(final OrderRequest orderRequest) {
         boolean isOrdered = orderService.order(orderRequest.getUser(), orderRequest.getOrder());
 
         if (isOrdered) {
+            repositoryService.createOrder(orderRequest.getUser(), orderRequest.getOrder());
             informationService.inform(orderRequest.getUser());
-            orderRepository.createOrder(orderRequest.getUser(), orderRequest.getOrder());
             return new OrderDto(orderRequest.getUser(), true);
         } else {
             return new OrderDto(orderRequest.getUser(), false);

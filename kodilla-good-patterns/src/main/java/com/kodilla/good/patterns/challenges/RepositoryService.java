@@ -1,5 +1,5 @@
 package com.kodilla.good.patterns.challenges;
 
-public interface OrderRepository {
+public interface RepositoryService {
     void createOrder(User user, Order order);
 }
