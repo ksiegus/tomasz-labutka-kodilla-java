@@ -7,7 +7,7 @@ public class FlightFinderRunner {
     public static void main(String[] args) {
         Flight flight1 = new Flight("FN001", "Poznan", "Lodz", "Warszawa", LocalTime.of(10,15,00));
         Flight flight2 = new Flight("FN002", "Poznan", "Wroclaw", "Warszawa", LocalTime.of(15,15,00));
-        Flight flight3 = new Flight("FN003", "Warszawa", "", "Krakow", LocalTime.of(12,40,00));
+        Flight flight3 = new Flight("FN003", "Warszawa", "", "Gdansk", LocalTime.of(12,40,00));
         Flight flight4 = new Flight("FN004", "Warszawa", "Lodz", "Krakow", LocalTime.of(9,10,00));
         Flight flight5 = new Flight("FN005", "Poznan", "", "Krakow", LocalTime.of(17,15,00));
         Flight flight6 = new Flight("FN006", "Gdansk", "Warszawa", "Krakow", LocalTime.of(21,50,00));
@@ -46,6 +46,11 @@ public class FlightFinderRunner {
         for(Flight flight : resultTransfer) {
             System.out.println(flight);
         }
+
+        boolean result = flightFinder.isFlightExist("Poznan", "Gdansk");
+        System.out.println(result);
+
+
 
     }
 }
