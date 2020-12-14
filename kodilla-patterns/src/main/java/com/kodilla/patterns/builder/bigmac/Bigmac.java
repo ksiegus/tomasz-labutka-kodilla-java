@@ -39,7 +39,10 @@ public final class Bigmac {
             return this;
         }
         public Bigmac build() {
-            return new Bigmac(bun, burgers, sauce, ingredients);
+            if (bun != null && bun != "" && burgers >= 1) {
+                return new Bigmac(bun, burgers, sauce, ingredients);
+            }
+            return null;
         }
     }
 

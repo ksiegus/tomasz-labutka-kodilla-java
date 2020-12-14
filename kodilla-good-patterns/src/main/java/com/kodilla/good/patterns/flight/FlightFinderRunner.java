@@ -47,7 +47,7 @@ public class FlightFinderRunner {
             System.out.println(flight);
         }
 
-        boolean result = flightFinder.isFlightExist("Poznan", "Gdansk");
+        boolean result = flightFinder.isFlightExist("Poznan", "Gdansk", "Gdansk");
         System.out.println(result);
 
 

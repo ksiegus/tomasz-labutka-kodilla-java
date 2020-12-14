@@ -19,16 +19,17 @@ public class FlightFinder {
     public List<Flight> findFlightTransfer(String airport) {
         return this.flightDatabase.getFlights().stream().filter(t -> t.getTransferAirport() == airport).collect(Collectors.toList());
     }
-    public boolean isFlightExist(String departureAirport, String arrivalAirport) {
+    public boolean isFlightExist(String departureAirport, String arrivalAirport, String arrivalAirportCheck) {
+        System.out.println(departureAirport+ "->" + arrivalAirport + "["+arrivalAirportCheck+"]");
+
         List<Flight> flightList = this.flightDatabase.getFlights().stream().filter(t -> t.getDepartureAirport() == departureAirport).collect(Collectors.toList());
+        System.out.println(flightList);
         for(Flight flight :flightList) {
-            if (flight.getArrivalAirport() == arrivalAirport) {
+            if (flight.getArrivalAirport().equals(arrivalAirportCheck)) {
                 return true;
             }
             else {
-                System.out.println(flight.getArrivalAirport());
-                System.out.println(arrivalAirport);
-                return isFlightExist(flight.getArrivalAirport(), arrivalAirport);
+                this.isFlightExist(flight.getArrivalAirport(), arrivalAirport, arrivalAirportCheck);
             }
 
         }
