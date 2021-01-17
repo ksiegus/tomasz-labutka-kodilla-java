@@ -34,7 +34,6 @@ class BigmacTestSuite {
     void testBigmacBuilderCheckRequired() {
         //Given
         Bigmac bigmac1 = new Bigmac.BigmacBuilder()
-                .bun("Roll with sesame seeds")
                 .sauce("Barbecue")
                 .ingredient("Onion")
                 .ingredient("Chili Peppers")
@@ -43,20 +42,11 @@ class BigmacTestSuite {
                 .ingredient("Mushrooms")
                 .build();
 
-        Bigmac bigmac2 = new Bigmac.BigmacBuilder()
-                .bun("")
-                .burgers(3)
-                .sauce("Barbecue")
-                .ingredient("Onion")
-                .ingredient("Chili Peppers")
-                .ingredient("Cucumber")
-                .ingredient("Cheese")
-                .ingredient("Mushrooms")
-                .build();
         //When
+        System.out.println(bigmac1);
 
         //Then
-        assertNull(bigmac1);
-        assertNull(bigmac2);
+        assertEquals("Bun", bigmac1.getBun());
+        assertEquals(1, bigmac1.getBurgers());
     }
 }

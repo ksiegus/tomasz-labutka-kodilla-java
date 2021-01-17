@@ -14,8 +14,8 @@ public final class Bigmac {
     private List<String> ingredients = new ArrayList<>();
 
     public static class BigmacBuilder {
-        private String bun;
-        private int burgers;
+        private String bun = "Bun";
+        private int burgers = 1;
         private String sauce;
         private List<String> ingredients = new ArrayList<>();
 
@@ -39,10 +39,7 @@ public final class Bigmac {
             return this;
         }
         public Bigmac build() {
-            if (bun != null && bun != "" && burgers >= 1) {
-                return new Bigmac(bun, burgers, sauce, ingredients);
-            }
-            return null;
+            return new Bigmac(bun, burgers, sauce, ingredients);
         }
     }
 
